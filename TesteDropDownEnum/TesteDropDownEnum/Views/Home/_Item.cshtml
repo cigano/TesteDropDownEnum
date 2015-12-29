@@ -1,0 +1,12 @@
+﻿@model TesteDropDownEnum.Controllers.Teste
+@using TesteDropDownEnum.Controllers
+
+@using (Html.BeginCollectionItem("Testes"))
+{
+    <div class="row form-group">
+        <div class="col-md-12">
+            <label>Origem da Mercadoria @Model.item</label>
+            @Html.DropDownListFor(model => model.item, Html.MeuEnumItens(Model.item), "Selecione", htmlAttributes: new { @class = "form-control", @readonly = "readonly" })
+        </div>
+    </div>
+}
