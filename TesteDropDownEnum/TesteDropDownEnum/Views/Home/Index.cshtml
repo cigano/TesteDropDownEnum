@@ -1,0 +1,24 @@
+﻿@model TesteDropDownEnum.Controllers.Principal
+@using TesteDropDownEnum.Controllers
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<!--Assim funciona-->
+@Html.DropDownListFor(a => a.Item, Html.MeuEnumItens3(Model.Item), "Selecione", htmlAttributes: new { @class = "form-control", @readonly = "readonly" })
+
+@Html.DropDownListFor(a => a.Teste[0].item, Html.MeuEnumItens3(Model.Teste[0].item), "Selecione", htmlAttributes: new { @class = "form-control", @readonly = "readonly" })
+
+@using (Html.BeginForm())
+{
+    for (int i = 0; i < Model.Teste.Count(); i++)
+    {
+        <div class="row form-group">
+            <div class="col-md-12">
+                <label>Origem da Mercadoria @Model.Teste[i].item</label>
+                <!--Assim não funciona-->
+                @Html.DropDownListFor(a => a.Teste[i].item, Html.MeuEnumItens3(Model.Teste[i].item), "Selecione", htmlAttributes: new { @class = "form-control", @readonly = "readonly" })
+            </div>
+        </div>
+    }
+}
